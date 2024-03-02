@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_qr_management_flutter/ui/views/qr_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,7 +12,7 @@ class HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _screens = [
-    Text('QR一覧'),
+    QRListScreen(),
     Text('QR生成'),
   ];
 
