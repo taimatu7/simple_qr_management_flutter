@@ -1,16 +1,19 @@
-# simple_qr_management_flutter
+# シンプルQRコード管理
 
-A new Flutter project.
+シンプルQRコード管理は、QRコードの作成・管理を行います。  
+テキストからQRコードの作成を行うことが出来ます。
+また作成したコードの管理を行うことが出来ます。
 
-## Getting Started
+## アーキテクチャ
+MVVM
 
-This project is a starting point for a Flutter application.
+小さなアプリなので、クリーンアーキテクチャやDDDなどは考慮せずに作成する。(開発スピードを上げるため)  
 
-A few resources to get you started if this is your first Flutter project:
+以下ディレクトリ構成
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- data
+    - models : データモデルクラス (dbのrealmModel使用)
+    - repositories :　データ取得・更新するクラス 
+- ui
+    - views : 表示用画面クラス
+    - view_models : ViewModelクラス
