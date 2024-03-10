@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension BuildContextExtension on BuildContext {
-  void showCircularProgressIndicator(Future<void> function) async {
+  Future<void> showCircularProgressIndicator(Future<void> function) async {
     showDialog(
       context: this,
       builder: (context) {
