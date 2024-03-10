@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:simple_qr_management_flutter/ui/views/widgets/qr_dialog.dart';
 
 class QRListScreen extends ConsumerStatefulWidget {
   const QRListScreen({super.key});
@@ -36,13 +37,21 @@ class QRListScreenState extends ConsumerState<QRListScreen> {
 
             return ListView.separated(
                 itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      leading: Text(index.toString()),
-                      title: const Text("QRコードに変換される文字"),
-                      trailing: const Icon(Icons.qr_code),
-                    ),
-                  );
+                  return GestureDetector(
+                      child: Card(
+                        child: ListTile(
+                          leading: Text(index.toString()),
+                          title: const Text("QRコードに変換される文字"),
+                          trailing: const Icon(Icons.qr_code),
+                        ),
+                      ),
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const QrDialog(data: "test");
+                            });
+                      });
                 },
                 separatorBuilder: (context, index) => const Divider(height: 1),
                 itemCount: 1);
