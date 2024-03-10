@@ -17,6 +17,35 @@ class QrDialog extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text('削除'),
+                    content: const Text('削除しますか？'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, false);
+                        },
+                        child: const Text('キャンセル'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context, true);
+                        },
+                        child: const Text('削除'),
+                      ),
+                    ],
+                  );
+                }).then((value) {
+              if (value as bool) Navigator.pop(context);
+            });
+          },
+          child: const Text('削除'),
+        ),
+        TextButton(
+          onPressed: () {
             Navigator.pop(context);
           },
           child: const Text('閉じる'),
