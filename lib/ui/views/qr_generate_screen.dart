@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:simple_qr_management_flutter/ui/extensions/build_context_extension.dart';
+import 'package:simple_qr_management_flutter/ui/view_models/save_qr.dart';
 
 class QRGenerateScreen extends ConsumerStatefulWidget {
   const QRGenerateScreen({super.key});
@@ -62,18 +63,21 @@ class QRGenerateScreenState extends ConsumerState<QRGenerateScreen> {
                         currentScope.hasFocus) {
                       FocusManager.instance.primaryFocus!.unfocus();
                     }
-                    // TODO 入力したデータを保存する
-                    await context.showCircularProgressIndicator(
-                        Future.delayed(const Duration(seconds: 2), () {
+                    final result =
+                        await context.showCircularProgressIndicator<bool>(ref
+                            .read(saveQrProvider)
+                            .execute(_textEditingController.text));
+
+                    if (result && context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text('QRコードを生成しました'),
                         ),
                       );
-                    }));
-                    // TODO 成功か失敗かを戻り値として取得して使用する
+                    }
+
                     setState(() {
-                      isGenerated = true;
+                      isGenerated = result;
                     });
                   },
                   child: const Text('QRコードを生成する'),

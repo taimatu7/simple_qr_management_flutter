@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension BuildContextExtension on BuildContext {
-  Future<void> showCircularProgressIndicator(Future<void> function) async {
+  Future<T> showCircularProgressIndicator<T>(Future<T> function) async {
     showDialog(
       context: this,
       builder: (context) {
@@ -10,7 +10,8 @@ extension BuildContextExtension on BuildContext {
         );
       },
     );
-    await function;
+    final result = await function;
     Navigator.pop(this);
+    return result;
   }
 }

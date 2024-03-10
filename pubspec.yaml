@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^2.4.10
   qr_flutter: ^4.1.0
+  realm: ^1.9.0
+  build_runner: ^2.4.8
+  ulid: ^2.0.0
 
 dev_dependencies:
   flutter_test:
