@@ -47,7 +47,7 @@ class Qr extends _Qr with RealmEntity, RealmObjectBase, RealmObject {
   static SchemaObject _initSchema() {
     RealmObjectBase.registerFactory(Qr._);
     return const SchemaObject(ObjectType.realmObject, Qr, 'Qr', [
-      SchemaProperty('id', RealmPropertyType.string),
+      SchemaProperty('id', RealmPropertyType.string, primaryKey: true),
       SchemaProperty('text', RealmPropertyType.string),
       SchemaProperty('createdAt', RealmPropertyType.int),
     ]);

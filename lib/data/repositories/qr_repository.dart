@@ -14,7 +14,29 @@ class QrRepository {
   }
 
   List<Qr> findAll() {
+    _realm.refresh();
     return _realm.all<Qr>().toList();
+  }
+
+  Qr? find(String id) {
+    return _realm.find<Qr>(id);
+  }
+
+  bool delete(String id) {
+    final local = _realm.find<Qr>(id);
+    if (local == null) {
+      return false;
+    }
+    try {
+      _realm.write(() {
+        _realm.delete<Qr>(local);
+      });
+      _realm.refresh();
+    } catch (e) {
+      print("QR削除時にエラー");
+      return false;
+    }
+    return true;
   }
 
   bool save(String text) {
