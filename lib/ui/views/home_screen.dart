@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_qr_management_flutter/ui/views/qr_generate_screen.dart';
 import 'package:simple_qr_management_flutter/ui/views/qr_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class HomeScreenState extends State<HomeScreen> {
 
   static const List<Widget> _screens = [
     QRListScreen(),
-    Text('QR生成'),
+    QRGenerateScreen(),
   ];
 
   void _onItemTapped(int index) {
